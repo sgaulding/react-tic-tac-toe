@@ -23,5 +23,5 @@ jobs:
     - run: yarn install
     - run: yarn build
     - run: yarn test
-    - run: yarn gh-prebuild 
+    - run: yarn gh-predeploy 
     - run: yarn gh-deploy
