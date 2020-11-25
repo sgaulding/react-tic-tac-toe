@@ -9,7 +9,7 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "gh-predeploy": "npm run build",
+    "gh-predeploy": "yarn build",
     "gh-deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
