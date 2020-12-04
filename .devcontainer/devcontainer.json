@@ -13,14 +13,19 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"dbaeumer.vscode-eslint"
+		"dbaeumer.vscode-eslint",
+		"ms-azuretools.vscode-docker",
+		"eamodio.gitlens",
+		"msjsdiag.debugger-for-chrome",
+		"msjsdiag.debugger-for-edge",
+		"firefox-devtools.vscode-firefox-debug"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
     "forwardPorts": [3000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "yarn install",
+    "postCreateCommand": "yarn install --dev",
 
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "node"
