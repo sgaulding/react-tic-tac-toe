@@ -45,7 +45,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
-      - name: Build And Deploy
+      - name: Build And Deploy on Pull Request
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v0.0.1-preview
         with:
@@ -57,7 +57,7 @@ jobs:
           app_location: "/" # App source code path
           output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
-          
+
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
