@@ -1,13 +1,6 @@
-ARG VARIANT=14
-FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:${VARIANT}
+# Node.js 22 LTS (Active LTS until 2027-10, Maintenance until 2028-04)
+ARG VARIANT=22
+FROM mcr.microsoft.com/devcontainers/javascript-node:${VARIANT}
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#      && apt-get -y install --no-install-recommends <your-package-list-here>
-
-# [Optional] Uncomment if you want to install an additional version of node using nvm
-# ARG EXTRA_NODE_VERSION=10
-# RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
-
-# [Optional] Uncomment if you want to install more global node modules
-# RUN sudo -u node npm install -g <your-package-list-here>
+# Note: Docker-in-Docker is installed via devcontainer feature, not here.
+# This keeps the Dockerfile minimal and lets the feature handle DinD setup.

@@ -1,32 +1,43 @@
 {
-	"name": "Node.js",
-	"build": {
-		"dockerfile": "Dockerfile",
-		// Update 'VARIANT' to pick a Node version: 10, 12, 14
-		"args": { "VARIANT": "14" }
-	},
+  "name": "Node.js with Docker-in-Docker",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": { "VARIANT": "22" }
+  },
 
-	// Set *default* container specific settings.json values on container create.
-	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash"
-	},
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "moby": true,
+      "installDockerBuildx": true,
+      "installDockerComposeSwitch": true
+    }
+  },
 
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"dbaeumer.vscode-eslint",
-		"ms-azuretools.vscode-docker",
-		"eamodio.gitlens",
-		"msjsdiag.debugger-for-chrome",
-		"msjsdiag.debugger-for-edge",
-		"firefox-devtools.vscode-firefox-debug"
-	],
+  "runArgs": [
+    "--memory=4g",
+    "--cpus=2",
+    "--pids-limit=1000",
+    "--security-opt=no-new-privileges:true"
+  ],
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-    "forwardPorts": [3000],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens",
+        "firefox-devtools.vscode-firefox-debug"
+      ]
+    }
+  },
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "yarn install --dev",
+  "forwardPorts": [3000],
 
-	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "node"
+  "postCreateCommand": "yarn install",
+
+  "remoteUser": "node"
 }
